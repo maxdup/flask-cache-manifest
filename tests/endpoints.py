@@ -1,10 +1,6 @@
-import unittest
-
-from flask_cache_manifest import FlaskCacheManifest
 
 
 def test_specific_endpoints(app, client):
-    print(app.url_map)
     huf = app.jinja_env.globals['hashed_url_for']
 
     # static endpoint
@@ -49,7 +45,6 @@ def test_specific_endpoints(app, client):
 
 
 def test_relative_endpoints(app, client):
-    print(app.url_map)
     huf = app.jinja_env.globals['hashed_url_for']
 
     # static endpoint

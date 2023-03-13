@@ -4,10 +4,13 @@ import os
 
 from flask import request, url_for
 
+EXT_NAME = "Flask-Cache-Manifest"
+
 
 class FlaskCacheManifest(object):
     def __init__(self, app=None):
         self.app = app
+        self.manifests = {}
 
         if app is not None:
             self.init_app(app)
@@ -17,7 +20,7 @@ class FlaskCacheManifest(object):
         :param app: Flask application
         :return: None
         """
-        self.manifests = {}
+        self.app = app
 
         self.load_manifest("static", app)
         for endpoint, blueprint in app.blueprints.items():
@@ -31,14 +34,17 @@ class FlaskCacheManifest(object):
 
         manifest_path = os.path.join(scaffold._static_folder,
                                      "cache_manifest.json")
+
         try:
             with scaffold.open_resource(manifest_path, "r") as f:
                 self.manifests[endpoint] = json.load(f)
         except json.JSONDecodeError:
-            logging.warning(f"Couldn't decode file: {manifest_path}")
+            logging.warning(
+                f"{EXT_NAME} | Couldn't decode file: {manifest_path}")
         except PermissionError:
-            logging.warning(f"Couldn't access file: {manifest_path}")
-        except (FileNotFoundError, Exception):
+            logging.warning(
+                f"{EXT_NAME} | Couldn't access file: {manifest_path}")
+        except (FileNotFoundError, Exception) as e:
             pass
 
     def hashed_url_for(self, endpoint, **values):
