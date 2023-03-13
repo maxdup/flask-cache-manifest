@@ -2,26 +2,20 @@ from setuptools import setup
 
 
 setup(
-    name="Flask-Static-Digest",
-    version="0.2.1",
-    author="Nick Janetakis",
-    author_email="nick.janetakis@gmail.com",
-    url="https://github.com/nickjj/flask-static-digest",
-    description="Flask extension for md5 tagging and gzipping static files.",
+    name="Flask-Cache-Manifest",
+    version="0.1.0",
+    author="Maxime Dupuis",
+    author_email="mdupuis@hotmail.ca",
+    url="https://github.com/maxdup/flask-cache-manifest",
+    description="Flask extension to serve md5 hashed assets.",
     license="MIT",
     package_data={"Flask-Static-Digest": ["VERSION"]},
-    packages=["flask_static_digest"],
+    packages=["flask_cache_manifest"],
     platforms="any",
     python_requires=">=3.6",
-    zip_safe=False,
     install_requires=[
-        "Flask>=1.0"
+        "Flask>=2.0"
     ],
-    entry_points={
-        "flask.commands": [
-            "digest=flask_static_digest.cli:digest"
-        ],
-    },
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Flask",
