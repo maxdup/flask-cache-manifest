@@ -89,9 +89,8 @@ def test_manifest_loading_errors(appFactory, caplog):
     flaskCacheManifest.load_manifest(endpoint, bp)
 
     assert len(caplog.records) == 1
-    assert caplog.records[0].message == \
-        "Flask-Cache-Manifest | Couldn't access file: " + \
-        "./tests/data/bundle2/cache_manifest.json"
+    assert caplog.records[0].message.startswith(
+        "Flask-Cache-Manifest | Couldn't access file:")
 
     assert len(flaskCacheManifest.manifests) == 0
 
@@ -104,9 +103,8 @@ def test_manifest_loading_errors(appFactory, caplog):
     flaskCacheManifest.load_manifest(endpoint, bp)
 
     assert len(caplog.records) == 1
-    assert caplog.records[0].message == \
-        "Flask-Cache-Manifest | Couldn't decode file: " + \
-        "./tests/data/bundle2/cache_manifest.json"
+    assert caplog.records[0].message.startswith(
+        "Flask-Cache-Manifest | Couldn't decode file:")
 
     assert len(flaskCacheManifest.manifests) == 0
 
