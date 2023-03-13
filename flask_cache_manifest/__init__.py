@@ -23,7 +23,7 @@ class FlaskCacheManifest(object):
         for endpoint, blueprint in app.blueprints.items():
             self.load_manifest(f"{endpoint}.static", blueprint)
 
-        app.add_template_global(self.static_url_for)
+        app.add_template_global(self.hashed_url_for)
 
     def load_manifest(self, endpoint, scaffold):
         if not scaffold.has_static_folder:
