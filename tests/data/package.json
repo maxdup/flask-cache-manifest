@@ -1,0 +1,18 @@
+{
+  "name": "data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "build": "webpack --config webpack.bundle1.js & webpack --config webpack.bundle2.js & webpack --config webpack.bundle3.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "mini-css-extract-plugin": "^2.7.3",
+    "webpack": "^5.76.1",
+    "webpack-cli": "^5.0.1",
+    "webpack-manifest-plugin": "^5.0.0"
+  }
+}
