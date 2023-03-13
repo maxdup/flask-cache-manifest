@@ -14,9 +14,9 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 config = {
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    publicPath: '', // This is important, Webpack 5 defaults to 'auto'
     filename: "[name]-[contenthash].js",
-    clean: true,
+    clean: true
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: filenames }),
