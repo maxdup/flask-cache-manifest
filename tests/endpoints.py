@@ -1,6 +1,6 @@
 
 
-def test_specific_endpoints(app, client):
+def test_specific_endpoint_static(app, client):
     huf = app.jinja_env.globals['hashed_url_for']
 
     # static endpoint
@@ -13,6 +13,10 @@ def test_specific_endpoints(app, client):
     assert client.get(css_url).status_code == 200
     assert client.get(js_url).status_code == 200
 
+
+def test_specific_endpoint_one_static(app, client):
+    huf = app.jinja_env.globals['hashed_url_for']
+
     # one.static endpoint
     with app.test_request_context():
         css_url = huf('one.static', filename='app.css')
@@ -23,6 +27,10 @@ def test_specific_endpoints(app, client):
     assert client.get(css_url).status_code == 200
     assert client.get(js_url).status_code == 200
 
+
+def test_specific_endpoint_one_a_static(app, client):
+    huf = app.jinja_env.globals['hashed_url_for']
+
     # one.a.static endpoint
     with app.test_request_context():
         css_url = huf('one.a.static', filename='app.css')
@@ -32,6 +40,10 @@ def test_specific_endpoints(app, client):
 
     assert client.get(css_url).status_code == 200
     assert client.get(js_url).status_code == 200
+
+
+def test_specific_endpoint_two_static(app, client):
+    huf = app.jinja_env.globals['hashed_url_for']
 
     # two.static endpoint
     with app.test_request_context():
@@ -44,7 +56,7 @@ def test_specific_endpoints(app, client):
     assert client.get(js_url).status_code == 200
 
 
-def test_relative_endpoints(app, client):
+def test_relative_endpoint_one(app, client):
     huf = app.jinja_env.globals['hashed_url_for']
 
     # static endpoint
@@ -57,6 +69,10 @@ def test_relative_endpoints(app, client):
     assert client.get(css_url).status_code == 200
     assert client.get(js_url).status_code == 200
 
+
+def test_relative_endpoint_two(app, client):
+    huf = app.jinja_env.globals['hashed_url_for']
+
     # one.static endpoint
     with app.test_request_context('/one/'):
         css_url = huf('.static', filename='app.css')
@@ -67,6 +83,10 @@ def test_relative_endpoints(app, client):
     assert client.get(css_url).status_code == 200
     assert client.get(js_url).status_code == 200
 
+
+def test_relative_endpoint_one_a(app, client):
+    huf = app.jinja_env.globals['hashed_url_for']
+
     # one.a.static endpoint
     with app.test_request_context('/one/a'):
         css_url = huf('.static', filename='app.css')
@@ -76,6 +96,10 @@ def test_relative_endpoints(app, client):
 
     assert client.get(css_url).status_code == 200
     assert client.get(js_url).status_code == 200
+
+
+def test_relative_endpoint_two(app, client):
+    huf = app.jinja_env.globals['hashed_url_for']
 
     # two.static endpoint
     with app.test_request_context('/two'):

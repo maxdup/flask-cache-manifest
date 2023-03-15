@@ -10,9 +10,9 @@ EXT_NAME = "Flask-Cache-Manifest"
 class FlaskCacheManifest(object):
     def __init__(self, app=None):
         """
-        Contstructor for FlaskCacheManifest, will call
-        :func:`FlaskCacheManifest.init_app` automatically if
-        app object is provided.
+        Constructor function for FlaskCacheManifest. It will call
+        :func:`FlaskCacheManifest.init_app` automatically if the
+        app parameter is provided.
 
         :param app: A Flask application.
         :type app: flask.Flask
@@ -34,14 +34,15 @@ class FlaskCacheManifest(object):
         :type app: flask.Flask
         """
         self.app = app
-        self.replace_url_for = False
+
+        app.config.setdefault('CACHE_MANIFEST_REPLACE_URL_FOR', False)
 
         self.load_manifest("static", app)
         for endpoint, blueprint in app.blueprints.items():
             self.load_manifest(f"{endpoint}.static", blueprint)
 
         app.add_template_global(self.hashed_url_for, name='hashed_url_for')
-        if self.replace_url_for:
+        if app.config['CACHE_MANIFEST_REPLACE_URL_FOR']:
             app.add_template_global(self.hashed_url_for, name='url_for')
 
     def load_manifest(self, endpoint, scaffold):

@@ -42,7 +42,7 @@ def test_manifest_loading(appFactory):
         'app.2c9a71a69b1e717b6a86.css'
 
 
-def test_manifest_loading_errors(appFactory, caplog):
+def test_manifest_loading_error_generic(appFactory, caplog):
     app = appFactory()
 
     endpoint = 'one'
@@ -50,15 +50,6 @@ def test_manifest_loading_errors(appFactory, caplog):
 
     def generic_error_mock(*args):
         raise Exception
-
-    def not_found_error_mock(*args):
-        raise FileNotFoundError
-
-    def perm_error_mock(*args):
-        raise PermissionError
-
-    def json_error_mock(*args):
-        raise json.JSONDecodeError('error', 'file', 0)
 
     # test missing errors
     bp.open_resource = MagicMock(side_effect=generic_error_mock)
@@ -71,6 +62,16 @@ def test_manifest_loading_errors(appFactory, caplog):
 
     caplog.clear()
 
+
+def test_manifest_loading_error_notfound(appFactory, caplog):
+    app = appFactory()
+
+    endpoint = 'one'
+    bp = app.blueprints[endpoint]
+
+    def not_found_error_mock(*args):
+        raise FileNotFoundError
+
     # test missing errors
     bp.open_resource = MagicMock(side_effect=not_found_error_mock)
 
@@ -81,6 +82,16 @@ def test_manifest_loading_errors(appFactory, caplog):
     assert len(flaskCacheManifest.manifests) == 0
 
     caplog.clear()
+
+
+def test_manifest_loading_error_permission(appFactory, caplog):
+    app = appFactory()
+
+    endpoint = 'one'
+    bp = app.blueprints[endpoint]
+
+    def perm_error_mock(*args):
+        raise PermissionError
 
     # test permission errors
     bp.open_resource = MagicMock(side_effect=perm_error_mock)
@@ -95,6 +106,16 @@ def test_manifest_loading_errors(appFactory, caplog):
     assert len(flaskCacheManifest.manifests) == 0
 
     caplog.clear()
+
+
+def test_manifest_loading_error_json(appFactory, caplog):
+    app = appFactory()
+
+    endpoint = 'one'
+    bp = app.blueprints[endpoint]
+
+    def json_error_mock(*args):
+        raise json.JSONDecodeError('error', 'file', 0)
 
     # test decode errors
     bp.open_resource = MagicMock(side_effect=json_error_mock)
