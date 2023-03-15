@@ -1,14 +1,18 @@
 from setuptools import setup
 
+with open('README.md') as f:
+    long_description = f.read()
 
 setup(
     name='flask-cache-manifest',
     packages=['flask_cache_manifest'],
-    version='0.1.0',
+    version='1.0.0',
     author='Maxime Dupuis',
     author_email='mdupuis@hotmail.ca',
     url='https://github.com/maxdup/flask-cache-manifest',
     description='Flask extension to serve md5 hashed assets.',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     license='MIT',
     platforms='any',
     python_requires='>=3.6',
