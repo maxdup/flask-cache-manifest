@@ -196,5 +196,5 @@ intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
 
 autodoc_member_order = 'bysource'
 autoclass_content = 'class'
-html_logo = 'doc-logo.png'
+html_logo = 'doc-logo.jpg'
 html_favicon = 'favicon.ico'

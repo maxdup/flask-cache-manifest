@@ -23,7 +23,7 @@ Get yourself up and running quickly.
 .. toctree::
    :maxdepth: 2
 
-   quickstart
+   guides
 
 Api Reference
 -------------

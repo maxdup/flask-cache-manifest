@@ -71,7 +71,9 @@ Here's how it's done:
 Usage
 -----
 
-Given the above example, here's how you will be able to reference your files in your Jinja templates using :any:`hashed_url_for`.
+Flask-cache-manifest adds the :any:`hashed_url_for` function for use in your templates.
+It is analogous to Flask's url_for. Given the above example and its blueprints,
+here's how you would be able to reference your static files in your Jinja templates.
 
 .. code-block:: html
 
@@ -86,4 +88,3 @@ Given the above example, here's how you will be able to reference your files in 
     <!-- from the static folder relative to what is currently being rendered -->
     <link type="text/css" rel="stylesheet"
         href="{{ hashed_url_for('.static', filename='css/app.css') }}">
-
