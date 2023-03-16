@@ -38,6 +38,10 @@ Here's a partial example of what your webpack config might look like using webpa
         ]
     }
 
+Bonus
+~~~~~
+Flask-cache-manifest has your webpack assets covered in prod but what about your dev environment?
+We recommend that you look into `webpack-livereload-plugin <https://www.npmjs.com/package/webpack-livereload-plugin>`_.
 
 Other Bundlers
 --------------

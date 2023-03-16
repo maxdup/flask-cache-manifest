@@ -33,6 +33,7 @@ class FlaskCacheManifest(object):
         :param app: A Flask application.
         :type app: flask.Flask
         """
+
         self.app = app
 
         app.config.setdefault('CACHE_MANIFEST_REPLACE_URL_FOR', False)
