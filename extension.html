@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="English" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Extension reference &#8212; Flask-cache-manifest 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=76184ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Configuration Reference" href="configuration.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="extension-reference">
+<h1>Extension reference<a class="headerlink" href="#extension-reference" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="flask_cache_manifest.FlaskCacheManifest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">flask_cache_manifest.</span></span><span class="sig-name descname"><span class="pre">FlaskCacheManifest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flask_cache_manifest/extension.html#FlaskCacheManifest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#flask_cache_manifest.FlaskCacheManifest" title="Link to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="flask_cache_manifest.FlaskCacheManifest.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flask_cache_manifest/extension.html#FlaskCacheManifest.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#flask_cache_manifest.FlaskCacheManifest.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Constructor function for FlaskCacheManifest. It will call
+<a class="reference internal" href="#flask_cache_manifest.FlaskCacheManifest.init_app" title="flask_cache_manifest.FlaskCacheManifest.init_app"><code class="xref py py-func docutils literal notranslate"><span class="pre">FlaskCacheManifest.init_app()</span></code></a> automatically if the
+app parameter is provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>app</strong> (<a class="reference external" href="https://flask.palletsprojects.com/en/2.2.x/api/#flask.Flask" title="(in Flask v2.2.x)"><em>flask.Flask</em></a>) -- A Flask application.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="flask_cache_manifest.FlaskCacheManifest.init_app">
+<span class="sig-name descname"><span class="pre">init_app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flask_cache_manifest/extension.html#FlaskCacheManifest.init_app"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#flask_cache_manifest.FlaskCacheManifest.init_app" title="Link to this definition">¶</a></dt>
+<dd><p>Initializes the extension and loads the various
+<code class="code docutils literal notranslate"><span class="pre">cache_manifest.json</span></code> files. It adds <a class="reference internal" href="#flask_cache_manifest.FlaskCacheManifest.hashed_url_for" title="flask_cache_manifest.FlaskCacheManifest.hashed_url_for"><code class="xref py py-func docutils literal notranslate"><span class="pre">hashed_url_for()</span></code></a>
+to the template globals for use in Jinja templates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>app</strong> (<a class="reference external" href="https://flask.palletsprojects.com/en/2.2.x/api/#flask.Flask" title="(in Flask v2.2.x)"><em>flask.Flask</em></a>) -- A Flask application.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="flask_cache_manifest.FlaskCacheManifest.load_manifest">
+<span class="sig-name descname"><span class="pre">load_manifest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaffold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flask_cache_manifest/extension.html#FlaskCacheManifest.load_manifest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#flask_cache_manifest.FlaskCacheManifest.load_manifest" title="Link to this definition">¶</a></dt>
+<dd><p>Called automatically during <a class="reference internal" href="#flask_cache_manifest.FlaskCacheManifest.init_app" title="flask_cache_manifest.FlaskCacheManifest.init_app"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">init_app</span></code></a> but can be called manually
+to load blueprints after the initialization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>endpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) -- The endpoint the blueprint is registered as.</p></li>
+<li><p><strong>scaffold</strong> (<a class="reference external" href="https://flask.palletsprojects.com/en/2.2.x/api/#flask.Blueprint" title="(in Flask v2.2.x)"><em>flask.Blueprint</em></a>) -- A Flask application or a registered blueprint.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="flask_cache_manifest.FlaskCacheManifest.hashed_url_for">
+<span class="sig-name descname"><span class="pre">hashed_url_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/flask_cache_manifest/extension.html#FlaskCacheManifest.hashed_url_for"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#flask_cache_manifest.FlaskCacheManifest.hashed_url_for" title="Link to this definition">¶</a></dt>
+<dd><p>Generate a URL to the given endpoint with the given values by
+Extending the functionality of Flask's <a class="reference external" href="https://flask.palletsprojects.com/en/2.2.x/api/#flask.url_for" title="(in Flask v2.2.x)"><code class="xref py py-func docutils literal notranslate"><span class="pre">url_for()</span></code></a>.
+Arguments will be forwarded to url_for, with the only
+<code class="code docutils literal notranslate"><span class="pre">values['filename']</span></code> being mutated to the appropriate hashed
+filename.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>endpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) -- The endpoint of the URL (name of the function).</p></li>
+<li><p><strong>values</strong> -- The variable arguments of the URL rule.</p></li>
+<li><p><strong>_external</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><em>optional</em>) -- If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, an absolute URL is generated.
+Server address can be changed via <code class="docutils literal notranslate"><span class="pre">SERVER_NAME</span></code>
+configuration variable which falls back to the <cite>Host</cite>
+header, then to the IP and port of the request.</p></li>
+<li><p><strong>_scheme</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) -- A string specifying the desired URL scheme.
+The <cite>_external</cite> parameter must be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> or a
+<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.11)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> is raised. The default behavior uses
+the same scheme as the current request, or
+<code class="docutils literal notranslate"><span class="pre">PREFERRED_URL_SCHEME</span></code> from the
+<span class="xref std std-ref">app configuration</span> if no request context
+is available. As of Werkzeug 0.10, this also can be set
+to an empty string to build protocol-relative URLs.</p></li>
+<li><p><strong>_anchor</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) -- If provided this is added as anchor to the URL.</p></li>
+<li><p><strong>_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>optional</em>) -- If provided this explicitly specifies an HTTP method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/doc-logo.jpg" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="index.html">Flask-cache-manifest</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guides.html">User Guides</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api_ref.html">Api Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration Reference</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Extension reference</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="api_ref.html">Api Reference</a><ul>
+      <li>Previous: <a href="configuration.html" title="previous chapter">Configuration Reference</a></li>
+      <li>Next: <a href="contributing.html" title="next chapter">Contributing</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Maxime Dupuis.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/extension.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
