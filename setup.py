@@ -44,6 +44,6 @@ setup(
         'Topic :: System :: Archiving :: Compression',
         'Operating System :: Unix',
         'Operating System :: MacOS :: MacOS X',
-        'Operating System:: Microsoft:: Windows'
+        'Operating System:: Microsoft :: Windows'
     ]
 )
