@@ -34,20 +34,22 @@ To build the Sphinx documentation, you need:
 
 .. code-block:: bash
 
-    pip install -U sphinx
-    pip install sphinx-autobuild
+   pip install -r docs/requirements.txt # one-time setup
 
-Then you can run sphinx-autobuild.sh in the docs/ directory. The documentation pages will be served on http://127.0.0.1:8000 by default.
+   sphinx-autobuild docs/source docs/build
+
+The documentation pages will be served on http://127.0.0.1:8000 by default.
 
 
 Testing
 -------
-Tests are ran using pytest. Pytest is included in the :code:`requirements.txt` file. make sure those are installed and you'll be good to go.
+Tests can be ran from the root folder using:
 
 .. code-block:: bash
 
-    pytest
+   pip install -r requirements.txt # one-time setup
 
+   pytest
 
 If you have a more elaborate setup with tox and pyenv, you'll have access to a few more automations by running tox.
 

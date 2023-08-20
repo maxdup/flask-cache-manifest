@@ -1,6 +1,8 @@
-[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/maxdup/flask-cache-manifest/blob/master/LICENSE.txt)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/flask-cache-manifest.svg)](https://pypi.python.org/pypi/flask-cache-manifest/)
+[![Platforms](https://img.shields.io/badge/platform-Linux,_MacOS,_Windows-blue)]()
 [![PyPI version fury.io](https://badge.fury.io/py/flask-cache-manifest.svg)](https://pypi.python.org/pypi/flask-cache-manifest/)
+[![GitHub Workflow Status (with event)](https://github.com/pySourceSDK/ValveBSP/actions/workflows/CI.yml/badge.svg)]()
 [![Coverage](https://github.com/maxdup/flask-cache-manifest/blob/master/docs/source/coverage.svg "coverage")]()
 
 # Flask-Cache-Manifest
